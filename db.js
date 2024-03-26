@@ -1,8 +1,13 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/inventory_db");
-const db = mongoose.connection;
+const DB =
+  "mongodb+srv://divyaprakash:prakash123@cluster0.jyiuam8.mongodb.net/inventory_db?retryWrites=true&w=majority&appName=Cluster0";
 
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
+mongoose
+  .connect(DB)
+  .then(() => {
+    console.log(`connection successful`);
+  })
+  .catch((err) => console.log(`no connection`));
 
-module.exports = db;
+module.exports = DB;
